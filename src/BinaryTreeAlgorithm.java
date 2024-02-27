@@ -14,9 +14,6 @@ public class BinaryTreeAlgorithm
     public MazeGen binary_tree(MazeGen visited_maze) {
 
         for(int y = 0; y<visited_maze.return_visited_maze().length; y++) {
-            //ARRAY list SO IT CAN BE RESIZABLE AND EXPAND
-            //NOT AN ARRAY BECAUSE ARRAYS CANNOT BE RESIZED/HAVE A NEW VALUE ADDED TO THE END
-
             for (int x = 0; x< visited_maze.return_visited_maze().length; x++) {
 
 
