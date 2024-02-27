@@ -10,20 +10,18 @@ import javax.swing.event.ChangeListener;
 public class Main extends JPanel implements ActionListener, ChangeListener{
 
    /*
-        What this Class does.
+        Main is the JPanel that is used for User Interface.
+            this includes the action listeners, and maze panel for where the generated maze is going to nbe displayed.
+            it is done in boarder layouts, layered with extra panels holding their components, as well, in groups.
 
-            it does....
-
-
-        extra.
-            ...
     */
 
 
 
     /*
         create 2 2D array sets.
-
+            for the mazes, to be drawn onto and later displayed.
+            one for error checking to ensure no mistakes.
      */
     private final MazeGen my_visited_maze = new MazeGen();
     private MazeGen CurrentMaze  = new MazeGen();
