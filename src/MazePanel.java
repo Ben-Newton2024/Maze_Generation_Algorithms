@@ -7,12 +7,14 @@ import javax.swing.JPanel;
 
 public class MazePanel extends JPanel
 {
-    MazeGen CurrentMaze = new MazeGen();
+    private MazeGen CurrentMaze = new MazeGen();
 
     private int blockWidth;
     private int blockHeight;
 
-    //CONSTRUCTOR
+
+    // method is called from other classes
+    //  is used to set local variables for the paint component.
     public void paint_Maze(MazeGen current_maze) {
         CurrentMaze = current_maze;
         setBlockWH();
@@ -20,14 +22,28 @@ public class MazePanel extends JPanel
     }
 
     //TO SET THE WIDTH OF EACH 2D MAZE SPACE TO A SPACE FOR THE GRAPHICAL DRAWINGS
-    public void setBlockWH() {
+    private void setBlockWH() {
         blockWidth = (int)Math.round((double)getWidth()/(double)CurrentMaze.return_visited_maze()[0].length);
         blockHeight = (int)Math.round((double)getHeight()/(double)CurrentMaze.return_visited_maze().length);
     }
 
-    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    ////////////////////////////////////////////////////MAIN PAINT COMPONENT//////////////////////////////////////////////////////
-    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    /*
+        Paint Component
+
+            Controls the logic for drawing the walls in the maze.
+            MazePanel, is the panel the maze will be drawn on.
+            by taking the array inputs of the mazes once calculated.
+
+            and ensuring the size of each block is the same, if the application has be resized.
+
+            we can paint onto the JPanel.
+
+            each maze has its own character set.
+
+            and it draws them accordingly,
+            if the maze is full of the character set of sidewinder algorithm then it will draw that.
+     */
     public void paintComponent(Graphics g)
     {
         //AVOID THIS

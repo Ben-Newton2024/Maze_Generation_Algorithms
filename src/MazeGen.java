@@ -1,8 +1,11 @@
 public class MazeGen {
 
-    //////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    //		MAZE GEN IS THE CLASS THAT GENERATES THE 2D ARRAYS OF EACH OF THE MAZES ONES BEING EMPTY			//
-    //////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /*
+        Generates 'empty' 2D arrays
+
+        these arrays are used for maze creations, it sets the boarders of the maze to impassable, 'AA'
+        and sets all the inside to '0' for a maze to be created within the center of the 2D array.
+     */
     private String[][] my_visited_maze;
 
 
