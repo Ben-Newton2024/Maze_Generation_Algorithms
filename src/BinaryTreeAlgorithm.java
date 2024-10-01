@@ -4,13 +4,11 @@ public class BinaryTreeAlgorithm
 {
     private final Random rand = new Random();
 
+    /*
+        random walks left to right - and able to walk down.
+        branches like a tree.
 
-
-    //////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-
-    //////////////////////////////////////////////////////////////////////////////////////////////////////////////
+     */
     public MazeGen binary_tree(MazeGen visited_maze) {
 
         for(int y = 0; y<visited_maze.return_visited_maze().length; y++) {

@@ -1,9 +1,6 @@
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
+import javax.swing.*;
+import java.awt.*;
 import java.util.Objects;
-
-import javax.swing.JPanel;
 
 public class MazePanel extends JPanel
 {
@@ -40,6 +37,7 @@ public class MazePanel extends JPanel
             we can paint onto the JPanel.
 
             each maze has its own character set.
+            This character set is a alphabetical set from A to Z --- certain sets lead to certain algorithms.
 
             and it draws them accordingly,
             if the maze is full of the character set of sidewinder algorithm then it will draw that.

@@ -1,4 +1,4 @@
-import java.awt.Graphics2D;
+import java.awt.*;
 
 public abstract class Actor {
 
@@ -25,10 +25,9 @@ public abstract class Actor {
 
     // Directional Data
     private int my_current_face = RIGHT;
-    private int my_last_face = RIGHT;
-    private int my_next_face = RIGHT;
+    private final int my_last_face = RIGHT;
+    private final int my_next_face = RIGHT;
 
-    public abstract void draw(Graphics2D g, int x, int y, int width, int height);
 
     // Get and Set methods for above public variables that need to be changes and called when needed.
     public void setPos(double x, double y) {
@@ -56,22 +55,6 @@ public abstract class Actor {
         return my_current_face;
     }
 
-    public void setlastFace(int d) {
-        my_last_face = d;
-    }
-
-    public int getlastFace() {
-        return my_last_face;
-    }
-
-    public void setnextFace(int d) {
-        my_next_face = d;
-    }
-
-    public int getnextFace() {
-        return my_next_face;
-    }
-
     //method for moving an instance of a class that inherits these attributes,
     // moving along an array, from re setting their position from the current plus their speed.
     public void move() {
@@ -88,4 +71,7 @@ public abstract class Actor {
             setPos(getXpos(), getYpos() - my_speed);
         }
     }
+
+    // draw method - to draw the Bloc, if needed to show its movements around the space.
+    public abstract void draw(Graphics2D g, int x, int y, int width, int height);
 }

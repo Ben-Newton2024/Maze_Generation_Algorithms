@@ -7,6 +7,8 @@ public class WilsonAlgorithm
 {
     private final Random direct = new Random();
 
+    //TODO Comment this shit out - year later cannot remmeber how this works. time to disect woo....... kill me
+
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //	The algorithm goes something like this:																	//
     //																											//
@@ -228,6 +230,13 @@ public class WilsonAlgorithm
         }
         return visited_maze;
     }
+
+    /*
+        Is the path blocked - if so reset the path to start at the next opening previosuly made.
+
+        //Double check this correct?
+
+     */
     public void reset_Path(MazeGen visited_maze) {
         for(int y = 0; y<visited_maze.return_visited_maze().length; y++) {
             for (int x = 0; x<visited_maze.return_visited_maze().length; x++) {
@@ -240,8 +249,21 @@ public class WilsonAlgorithm
             }
         }
     }
+
+    /*
+       Once the maze is believed to be completed/ or it is checked every time via this function
+
+       if the maze is full then return true to exit any loops that may be given when it is called.
+
+       if it not fully filled AKA any position in the 2D array is == 0 (empty when maze 'map' is initialised
+       then it is false and code continues from previous call position.
+
+       //call the map inside as a paramater to check the current map that is being 'drawn' to
+     */
     public boolean isMaze_Full(MazeGen visited_maze) {
+        //set up check boolean value local to this function
         boolean is_empty= true;
+        //loop through all positions of 2D array to find any 'empty' values (set to 0) to confirm if map is empty or not
         for(int y = 0; y<visited_maze.return_visited_maze().length; y++) {
             for (int x = 0; x<visited_maze.return_visited_maze().length; x++) {
                 if (Objects.equals(visited_maze.return_visited_maze()[y][x], "0")) {
@@ -249,7 +271,6 @@ public class WilsonAlgorithm
                 }
             }
         }
-
         return is_empty;
     }
 
