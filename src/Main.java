@@ -1,10 +1,9 @@
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 
 public class Main extends JPanel implements ActionListener, ChangeListener{
@@ -53,7 +52,6 @@ public class Main extends JPanel implements ActionListener, ChangeListener{
 
     // north
     private final JSlider size = new JSlider(JSlider.HORIZONTAL,10,100,50);
-    private final JButton Reset = new JButton("Blank Canvas");
 
     // west
     private final JButton side_winder_button = new JButton("Sidewinder Algorithm");
@@ -108,15 +106,12 @@ public class Main extends JPanel implements ActionListener, ChangeListener{
         GridLayout NorthLayout = new GridLayout(1,2);
         NorthPanel.setLayout(NorthLayout);
         NorthPanel.add(size);
-        NorthPanel.add(Reset);
-
 
 
         // setting action listeners to main.
         side_winder_button.addActionListener(this);
         binary_tree_button.addActionListener(this);
         wilson_button.addActionListener(this);
-        Reset.addActionListener(this);
 
         // J slider settings, such as length, spacing, how it needs to be drawn basically.
         size.setMajorTickSpacing(10);
@@ -142,21 +137,25 @@ public class Main extends JPanel implements ActionListener, ChangeListener{
      */
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == side_winder_button) {
+            int x = size.getValue();
+            set_maze_size(x);
+            painter.paint_Maze(my_visited_maze);
             CurrentMaze = (sidewinder.sidewinder(my_visited_maze));
             painter.paint_Maze(CurrentMaze);
         }
         if(e.getSource() == binary_tree_button) {
+            int x = size.getValue();
+            set_maze_size(x);
+            painter.paint_Maze(my_visited_maze);
             CurrentMaze = binary_tree.binary_tree(my_visited_maze);
             painter.paint_Maze(CurrentMaze);
         }
         if(e.getSource() == wilson_button) {
-            CurrentMaze = wilson.wilson(point, my_visited_maze);
-            painter.paint_Maze(CurrentMaze);
-        }
-        if(e.getSource() == Reset) {
             int x = size.getValue();
             set_maze_size(x);
             painter.paint_Maze(my_visited_maze);
+            CurrentMaze = wilson.wilson(point, my_visited_maze);
+            painter.paint_Maze(CurrentMaze);
         }
         repaint();
     }
