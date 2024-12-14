@@ -4,7 +4,7 @@ public class MazeGen {
     private String[][] my_visited_maze;
 
     /*
-        public function called to be use to set up the board and wipe the board
+        public function called to be used to set up the board and wipe the board
 
         Generates 'empty' 2D arrays
 

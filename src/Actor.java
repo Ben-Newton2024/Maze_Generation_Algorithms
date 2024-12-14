@@ -25,8 +25,6 @@ public abstract class Actor {
 
     // Directional Data
     private int my_current_face = RIGHT;
-    private final int my_last_face = RIGHT;
-    private final int my_next_face = RIGHT;
 
 
     // Get and Set methods for above public variables that need to be changes and called when needed.
@@ -73,5 +71,7 @@ public abstract class Actor {
     }
 
     // draw method - to draw the Bloc, if needed to show its movements around the space.
+    // for some reason if I try to delete the below, it breaks, even though it isn't used.
+    // I HAVE NO IDEA WHAT I DID TO CAUSE THIS.
     public abstract void draw(Graphics2D g, int x, int y, int width, int height);
 }
