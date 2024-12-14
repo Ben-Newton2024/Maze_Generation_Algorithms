@@ -7,8 +7,6 @@ public class WilsonAlgorithm
 {
     private final Random direct = new Random();
 
-    //TODO Comment this shit out - year later cannot remmeber how this works. time to disect woo....... kill me
-
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //	The algorithm goes something like this:																	//
     //																											//
@@ -232,10 +230,7 @@ public class WilsonAlgorithm
     }
 
     /*
-        Is the path blocked - if so reset the path to start at the next opening previosuly made.
-
-        //Double check this correct?
-
+        Is the path blocked - if so reset the path to start at the next opening previously made.
      */
     public void reset_Path(MazeGen visited_maze) {
         for(int y = 0; y<visited_maze.return_visited_maze().length; y++) {
@@ -258,7 +253,7 @@ public class WilsonAlgorithm
        if it not fully filled AKA any position in the 2D array is == 0 (empty when maze 'map' is initialised
        then it is false and code continues from previous call position.
 
-       //call the map inside as a paramater to check the current map that is being 'drawn' to
+       //call the map inside as a parameter to check the current map that is being 'drawn' to
      */
     public boolean isMaze_Full(MazeGen visited_maze) {
         //set up check boolean value local to this function
@@ -274,6 +269,13 @@ public class WilsonAlgorithm
         return is_empty;
     }
 
+    //the below function is the random walk path that incorporates the random direction method.
+    // this is to randomly draw a path onto the 'canvas'
+    // when certain moves have been made, it will leave behind a letter to the tile
+    // so the painter can paint the corresponding move to the canvas.
+    // e.g. if it came from above, moved down and turned left
+    // the path would be something like that with is corresponding letter that tells the painter that that is what
+    // it needs to paint.
     public ArrayList<Integer> random_walk_path(Bloc maze_point_head, MazeGen visited_maze) {
         //RANDOM WALK RANDOMS START POINT
         int x = direct.nextInt(visited_maze.return_visited_maze().length);
@@ -342,6 +344,8 @@ public class WilsonAlgorithm
         return list;
     }
 
+    //Chooses a random direction for the maze pointer to start walking to, this is done from 0 to 3
+    //being, 0 being up, down, 2 left, 3 right.
     public void random_direction(Bloc maze_point_head) {
         int direction;
 
@@ -360,6 +364,15 @@ public class WilsonAlgorithm
             maze_point_head.setFace(Actor.RIGHT);
         }
     }
+
+    //valid move checker, since we cant have the maze pointer that moves and paints the maze start walking into walls
+    // and repainting the walls to new values.
+    // this just checks if the move that the point is going to make is valid before it performs the move and actually
+    // walks forward.
+    // this is done being getting the XY coords of the Actor 'a', (AKA THE POINTER OF THE MAZE/MAZE HEAD)
+    // its predicted direction it wants to go, and then calculates each 4 point of a valid tile its top left XY
+    // and then top right, bottom right, bottom left coords, this is done by adding the size of block itself to get the
+    // corners.
     private boolean isValidMove(Actor a, int direction, MazeGen maze)
     {
 
